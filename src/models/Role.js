@@ -6,7 +6,7 @@ const roleSchema = new mongoose.Schema({
     required: true,
     unique: true
   }
-}, { timeseries: true });
+}, { timestamps: true });
 
 roleSchema.pre('save', async function (next) {
   const Role = this.model('Role');
