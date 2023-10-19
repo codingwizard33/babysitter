@@ -7,7 +7,10 @@ const confirmPasswordService = async (req) => {
 
   const confirm = await bcrypt.compare(req.password, user.password);
 
-  return confirm;
+  if (confirm == false)
+    return confirm;
+
+  return user._id;
 };
 
 export { confirmPasswordService };

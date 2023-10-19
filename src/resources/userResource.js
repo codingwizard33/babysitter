@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 
 const userResource = async (req) => {
-  const user = await User.findOne({ email: req }).populate('role');
+  const user = await User.findOne({ _id: req }).populate('role');
 
   const userData = {
     _id: user._id,
