@@ -1,9 +1,9 @@
 import { userResource } from "../../resources/userResource.js";
-import { confirmPasswordService } from "./confirmPasswordService.js";
+import { comparePasswordService } from "./comparePasswordService.js";
 import { jwtSignService } from "./jwtSignService.js";
 
 const signInService = async (req) => {
-  const confirmed = await confirmPasswordService(req.body);
+  const confirmed = await comparePasswordService(req.body);
   if (confirmed == false)
     return {
       message: 'These credentials do not match our records.'
