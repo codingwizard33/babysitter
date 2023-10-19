@@ -9,7 +9,7 @@ const signInService = async (req) => {
       message: 'These credentials do not match our records.'
     };
 
-  const user = await userResource(req.body.email);
+  const user = await userResource(confirmed);
 
   const token = await jwtSignService(user);
 
