@@ -46,7 +46,7 @@ userSchema.pre('save', async function (next) {
   const User = this.model('User');
   const existingUser = await User.findOne({ email: this.email });
   if (existingUser) {
-    const error = new Error('Email address already exists.');
+    const error = new Error('Email address already exist.');
     return next(error);
   }
   next();
