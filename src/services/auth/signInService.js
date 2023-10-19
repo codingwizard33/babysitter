@@ -4,7 +4,7 @@ import { jwtSignService } from "./jwtSignService.js";
 
 const signInService = async (req) => {
   const confirmed = await comparePasswordService(req.body);
-  if (confirmed == false)
+  if (confirmed === false)
     return {
       message: 'These credentials do not match our records.'
     };

@@ -7,7 +7,7 @@ const comparePasswordService = async (req) => {
 
   const confirm = await bcrypt.compare(req.password, user.password);
 
-  if (confirm == false)
+  if (confirm === false)
     return confirm;
 
   return user._id;
