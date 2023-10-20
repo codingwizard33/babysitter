@@ -5,6 +5,7 @@ import cors from "cors";
 import DBconnect from "./config/database.js";
 import { createRoles } from "./utils/createRoles.js";
 import { createUserAdmin } from "./utils/createUserAdmin.js";
+
 import web from "./routes/web.js";
 import auth from "./routes/auth.js";
 import api from "./routes/api.js";
