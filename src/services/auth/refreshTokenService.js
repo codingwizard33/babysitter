@@ -8,7 +8,11 @@ const refreshTokenService = async (req) => {
 
   const token = await jwtSignService(verify);
 
-  return { message: token };
+  return {
+    message: {
+      token: token
+    }
+  };
 };
 
 export { refreshTokenService };
