@@ -1,10 +1,11 @@
 import { jwtVerificationService } from "../services/auth/jwtVerificationService.js";
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.header('Authorization').split(' ')[1];
-
-  if (!token)
+  try {
+    var token = req.header('Authorization').split(' ')[1]; 
+  } catch (error) {
     return res.json({ message: 'Authentication failed.' });
+  }
 
   try {
     await jwtVerificationService(token);
