@@ -11,7 +11,7 @@ const signUpService = async (req) => {
       return {
         email: {
           message: 'Email address already exist.',
-          rule: 'exist'
+          rule: 'unique'
         }
       };
     }
