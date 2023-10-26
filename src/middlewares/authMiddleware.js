@@ -1,3 +1,5 @@
+import { EmailVerification } from "../emails/EmailVerification.js";
+import { userResource } from "../resources/userResource.js";
 import { jwtVerificationService } from "../services/auth/jwtVerificationService.js";
 
 const authMiddleware = async (req, res, next) => {
@@ -8,11 +10,24 @@ const authMiddleware = async (req, res, next) => {
   }
 
   try {
-    await jwtVerificationService(token);
+    const userId = await jwtVerificationService(token);
+    const user = await userResource(userId.userId);
+
+    if (!user.verifiedAt) {
+      const sendEmail = new EmailVerification(user, token);
+
+      try {
+        await sendEmail.sendEmail();
+
+        return res.json({ message: `Email verification message was sent to your ${user.email} address.` });
+      } catch (error) {
+        return res.status(500).json({ message: error.message });
+      }
+    }
 
     next();
   } catch (error) {
-    return res.json({ message: error.message });
+    return res.status(401).json({ message: error.message });
   }
 };
 

@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
@@ -11,8 +11,6 @@ import auth from "./routes/auth.js";
 import api from "./routes/api.js";
 import _404 from "./routes/_404.js";
 import _500 from "./routes/_500.js";
-
-dotenv.config();
 
 DBconnect();
 

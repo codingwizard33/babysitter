@@ -18,7 +18,8 @@ const createUserAdmin = async () => {
         longitude: 23.546,
         latitude: 45.789
       },
-      role: role
+      role: role,
+      verifiedAt: Date.now()
     });
 
     console.log('The admin user has been created successfully.');

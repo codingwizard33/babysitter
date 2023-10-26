@@ -11,7 +11,8 @@ const userResource = async (req) => {
     avatar: user.avatar,
     address: user.address,
     role: user.role.role,
-    createdAt: user.createdAt
+    createdAt: user.createdAt,
+    verifiedAt: user.verifiedAt
   };
 
   return userData;
