@@ -19,6 +19,10 @@ const passwordResetService = async (req) => {
         message: 'Password successfully changed.'
       };
     }
+  
+    return {
+      message: 'The password and password_confirmation must match.'
+    };
   } catch (error) {
     return error.message;
   }
