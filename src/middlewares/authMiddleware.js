@@ -15,7 +15,6 @@ const authMiddleware = async (req, res, next) => {
 
     if (!user.verifiedAt) {
       const sendEmail = new EmailVerification(user, token);
-
       try {
         await sendEmail.sendEmail();
 
