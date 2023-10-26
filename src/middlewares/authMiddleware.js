@@ -6,12 +6,12 @@ const authMiddleware = async (req, res, next) => {
   try {
     var token = req.header('Authorization').split(' ')[1]; 
   } catch (error) {
-    return res.json({ message: 'Authentication failed.' });
+    return res.status(401).json({ message: 'Authentication failed.' });
   }
 
   try {
-    const userId = await jwtVerificationService(token);
-    const user = await userResource(userId.userId);
+    const { userId } = await jwtVerificationService(token);
+    const user = await userResource(userId);
 
     if (!user.verifiedAt) {
       const sendEmail = new EmailVerification(user, token);
