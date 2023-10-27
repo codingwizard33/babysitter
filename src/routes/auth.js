@@ -8,6 +8,7 @@ import { refreshTokenController } from "../controllers/auth/refreshTokenControll
 import { emailVerificationController } from "../controllers/auth/emailVerificationController.js";
 import { forgotPasswordController } from "../controllers/auth/forgotPasswordController.js";
 import { passwordResetController } from "../controllers/auth/passwordResetController.js";
+import { passwordUpdateController } from "../controllers/user/passwordUpdateController.js";
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.post('/refresh-token', authMiddleware, refreshTokenController);
 router.get('/email-verification/:token', emailVerificationController);
 router.post('/forgot-password', forgotPasswordController);
 router.post('/password-reset/:token', passwordResetController);
+router.post('/password-update', authMiddleware, passwordUpdateController);
 
 export default router;
